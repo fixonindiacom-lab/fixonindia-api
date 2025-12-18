@@ -38,6 +38,7 @@ app.use(express.urlencoded({ extended: true }));
 const allowedOrigins = [
   "http://localhost:5173",
   "https://fixonindia.onrender.com",
+  "https://www.fixonindia.com",
   process.env.FRONTEND_URL
 ];
 
