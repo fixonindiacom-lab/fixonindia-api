@@ -13,7 +13,7 @@ async function sendEmail(to, subject, text) {
   try {
     // console.log(to, subject, text);
     await resend.emails.send({
-      from: "Your App <onboarding@resend.dev>", // safe default
+      from: "noreply@fixonindia.com", // safe default
       to,
       subject,
       text, // same as before
