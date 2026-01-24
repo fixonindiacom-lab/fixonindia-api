@@ -24,7 +24,6 @@ const getStorage = () => {
     params: (req, file) => {
       let resourceType = "auto";
 
-      // Force PDFs to image so they are previewable
       if (file.mimetype === "application/pdf") {
         resourceType = "image";
       }
@@ -32,6 +31,7 @@ const getStorage = () => {
       return {
         folder: "nitva",
         resource_type: resourceType,
+        access_mode: "public",   // 🔥 THIS LINE FIXES IT
       };
     },
   });
@@ -39,5 +39,7 @@ const getStorage = () => {
 
 
 
+
 module.exports = { cloudinary, getStorage };
+
 
