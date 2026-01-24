@@ -9,15 +9,35 @@ cloudinary.config({
   secure: true,
 });
 
+// const getStorage = () => {
+//   return new CloudinaryStorage({
+//     cloudinary,
+//     params: {
+//       folder: `nitva`,
+//       resource_type: 'auto',
+//     },
+//   });
+// };
 const getStorage = () => {
   return new CloudinaryStorage({
     cloudinary,
-    params: {
-      folder: `nitva`,
-      resource_type: 'auto',
+    params: (req, file) => {
+      let resourceType = "auto";
+
+      // Force PDFs to image so they are previewable
+      if (file.mimetype === "application/pdf") {
+        resourceType = "image";
+      }
+
+      return {
+        folder: "nitva",
+        resource_type: resourceType,
+      };
     },
   });
 };
 
 
+
 module.exports = { cloudinary, getStorage };
+
